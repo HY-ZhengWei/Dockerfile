@@ -20,4 +20,4 @@ ENV PATH $PATH:$JAVA_HOME/bin
 # 编译创建镜像
 # docker build -t hyzhengwei/jdk-ubuntu .
 # 镜像创建成功后，启动容器
-# docker run -it c_jdk --rm -it hyzhengwei/jdk-ubuntu
+# docker run --name c_jdk --rm -it hyzhengwei/jdk-ubuntu
