@@ -12,6 +12,8 @@ ENV CATALINA_HOME /apache-tomcat-7.0.77
 ENV CATALINA_BASE /apache-tomcat-7.0.77
 ENV PATH $PATH:$TOMCAT_HOME/lib:$TOMCAT_HOME/bin
 ADD http://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-7/v7.0.77/bin/apache-tomcat-7.0.77.tar.gz /
+RUN tar zxvf /apache-tomcat-7.0.77.tar.gz
+RUN rm -f /apache-tomcat-7.0.77.tar.gz
 RUN chmod -R 755 $TOMCAT_HOME/bin
 
 
