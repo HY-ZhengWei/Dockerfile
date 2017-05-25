@@ -1,5 +1,5 @@
 # 设置系统时间区为中国
-# 安装vi、ifconfig、netstat、telnet命令
+# 安装vi、ifconfig、netstat、telnet、ping命令
 
 # 设置继承镜像
 FROM ubuntu
@@ -15,6 +15,7 @@ RUN apt-get install -y tzdata && \
 RUN apt-get install -y vim
 RUN apt-get install -y telnet/xenial
 RUN apt-get install -y net-tools
+RUN apt-get install -y iputils-ping
 
 
 
