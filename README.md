@@ -22,4 +22,7 @@
     * 安装Apache Hadoop 2.6.5
     * 启动OpenSSH服务
     * 容器运行命令样例：docker run --name c_hadoop -h hadoop -p 22001:22 -p 9000:9000 -p 8088:8088 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50090:50090 -d -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hadoop-ubuntu
+    * Hadoop服务验证：
+        http://127.0.0.1:50070 查看NameNode状态
+        http://127.0.0.1:8088  查看Yarn状态
     
