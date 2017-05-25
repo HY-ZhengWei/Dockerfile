@@ -22,6 +22,9 @@ ENV CLASSPATH $JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 ENV PATH $PATH:$JAVA_HOME/bin
 
 
+# 设置自启动命令
+# CMD ["/run.sh"]
+
 
 # 编译创建镜像
 # docker build -t hyzhengwei/jdk-ubuntu .
