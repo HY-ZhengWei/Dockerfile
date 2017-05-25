@@ -13,7 +13,7 @@ ENV PATH $HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 
 # 设置免密码登录，生成私钥和公钥
 RUN ssh-keygen -t rsa -P "" -f /root/.ssh/id_rsa
-RUN cat /root/.ssh/id_rsa.pub>> /root/.ssh/authorized_keys
+RUN cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 
 
 # ADD http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.6.5/hadoop-2.6.5.tar.gz /
