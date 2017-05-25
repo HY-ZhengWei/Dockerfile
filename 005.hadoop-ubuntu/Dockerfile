@@ -7,7 +7,6 @@ FROM hyzhengwei/sshd-ubuntu
 MAINTAINER ZhengWei<HY.ZhengWei@qq.com> 2017-05-25
 
 
-
 ENV HADOOP_HOME /hadoop-2.6.5
 ENV PATH $HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 
@@ -15,8 +14,6 @@ ENV PATH $HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
 # 设置免密码登录，生成私钥和公钥
 RUN ssh-keygen -t rsa -P "" -f /root/.ssh/id_rsa
 RUN cat /root/.ssh/id_rsa.pub>> /root/.ssh/authorized_keys
-# 在hadoop首次启动时，不用再输入yes(参见ssh的参数StrictHostKeyChecking说明)
-RUN echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
 
 # ADD http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.6.5/hadoop-2.6.5.tar.gz /
