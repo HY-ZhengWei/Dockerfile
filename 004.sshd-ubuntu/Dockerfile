@@ -16,6 +16,10 @@ RUN sed -i 's/^PermitRootLogin/#PermitRootLogin/' /etc/ssh/sshd_config
 RUN echo "PermitRootLogin yes" >> /etc/ssh/sshd_config
 RUN echo "root:root" | chpasswd
 
+# 在首次执行ssh 127.0.0.1时，不用再输入yes(参见ssh的参数StrictHostKeyChecking说明)
+RUN echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
+
+
 # ADD run.sh /run.sh
 # RUN chmod 755 /run.sh
 # run.sh
