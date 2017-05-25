@@ -16,8 +16,8 @@ RUN ssh-keygen -t rsa -P "" -f /root/.ssh/id_rsa
 RUN cat /root/.ssh/id_rsa.pub >> /root/.ssh/authorized_keys
 
 
-ADD http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.6.5/hadoop-2.6.5.tar.gz /
-# ADD hadoop-2.6.5.tar.gz /
+# ADD http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.6.5/hadoop-2.6.5.tar.gz /
+ADD hadoop-2.6.5.tar.gz /
 
 
 RUN mkdir -p /hadoop_datas/hdfs/name && \
