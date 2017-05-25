@@ -1,3 +1,4 @@
+# 概述：中国时区、安装基础命令
 # 设置系统时间区为中国
 # 安装vi、ifconfig、netstat、telnet、ping命令
 
