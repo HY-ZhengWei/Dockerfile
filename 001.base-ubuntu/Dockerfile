@@ -1,6 +1,7 @@
 # 概述：中国时区、安装基础命令
 # 设置系统时间区为中国
 # 安装vi、ifconfig、netstat、telnet、ping命令
+# 安装supervisord服务管理工具 
 
 # 设置继承镜像
 FROM ubuntu
@@ -17,6 +18,7 @@ RUN apt-get install -y vim
 RUN apt-get install -y telnet/xenial
 RUN apt-get install -y net-tools
 RUN apt-get install -y iputils-ping
+RUN apt-get install -y supervisor
 
 
 
