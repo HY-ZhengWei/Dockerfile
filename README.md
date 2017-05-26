@@ -20,10 +20,7 @@
 
 * [hadoop-ubuntu动态Hadoop版本环境](https://hub.docker.com/r/hyzhengwei/hadoop-ubuntu)
     * 以安装Apache Hadoop 2.6.5为例子
-    * 启动OpenSSH服务
-    * Hadoop服务验证：
-        * http://127.0.0.1:50070 查看NameNode状态
-        * http://127.0.0.1:8088  查看Yarn状态
+    * 开启OpenSSH服务
     * 服务器功能规划（以4台服务器举例）
         
         | NameNode | DataNode | SecordaryNameNode |
@@ -33,6 +30,13 @@
         |          |hadoop03  |                   |
         |          |          |hadoop04           |
     * 容器运行命令样例
+        * 容器动态挂载的三个目录说明
+
+            | 动态挂载目录 | 说明 |
+            |:--------    |:-------- |
+            |/hadoop      |Apache Hadoop软件所在的主目录|
+            |/hadoop_datas|Hadoop数据目录。每个容器的目录路径应均不同|
+            |/jdk         |Java JDK所在的主目录  |
         * hadoop01：docker run --name c_hadoop01 -h hadoop01 -p 22001:22 -p 9000:9000 -p 9001:9001 -p 8088:8088 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50090:50090 -d -v /Users/hy/WSS/WorkSpace_Docker/hadoop-2.6.5:/hadoop -v /Users/hy/WSS/WorkSpace_Docker/hadoop_datas01:/hadoop_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hadoop-ubuntu
         * hadoop02：docker run --name c_hadoop02 -h hadoop02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hadoop-2.6.5:/hadoop -v /Users/hy/WSS/WorkSpace_Docker/hadoop_datas02:/hadoop_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hadoop-ubuntu
         * hadoop03：docker run --name c_hadoop03 -h hadoop03 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hadoop-2.6.5:/hadoop -v /Users/hy/WSS/WorkSpace_Docker/hadoop_datas03:/hadoop_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hadoop-ubuntu
@@ -44,3 +48,6 @@
     * 启动Hadoop集群
         * 主节点容器中执行初始化命令：hdfs namenode -format
         * 主节点容器中执行启动命令：start-all.sh
+    * Hadoop服务验证：
+        * http://127.0.0.1:50070 查看NameNode状态
+        * http://127.0.0.1:8088  查看Yarn状态
