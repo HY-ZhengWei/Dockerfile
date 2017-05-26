@@ -21,7 +21,7 @@
 * [hadoop-ubuntu动态Hadoop版本环境](https://hub.docker.com/r/hyzhengwei/hadoop-ubuntu)
     * 以安装Apache Hadoop 2.6.5为例子
     * 开启OpenSSH服务
-    * 服务器功能规划（以4台服务器举例）
+    * 服务器功能规划（以4台服务器完全分布式举例）
         
         | NameNode | DataNode | SecordaryNameNode |
         |:--------:|:--------:|:-----------------:|
