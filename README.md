@@ -18,10 +18,15 @@
     * 安装OpenSSH服务，随时准备打开22管理远程管理端口
     * 容器运行命令样例：docker run --name c_sshd -p 22001:22 -d -v JDK在宿主机的路径:/jdk:ro hyzhengwei/sshd-ubuntu /usr/sbin/sshd -D
 
-* [hadoop-ubuntu安装Apache Hadoop](https://hub.docker.com/r/hyzhengwei/hadoop-ubuntu)
-    * 安装Apache Hadoop 2.6.5
+* [hadoop-ubuntu动态Hadoop版本环境](https://hub.docker.com/r/hyzhengwei/hadoop-ubuntu)
+    * 以安装Apache Hadoop 2.6.5为例子
     * 启动OpenSSH服务
-    * 容器运行命令样例：docker run --name c_hadoop -h hadoop -p 22001:22 -p 9000:9000 -p 8088:8088 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50090:50090 -d -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hadoop-ubuntu
+    * 服务器功能规划（以4台服务器举例）
+|NameNode节点|DataNode节点|SecordaryNameNode节点|
+|hadoop01   |            |        |
+|           |hadoop02    |        |
+|           |hadoop03    |        |
+|           |            |hadoop04|
     * Hadoop服务验证：
         * http://127.0.0.1:50070 查看NameNode状态
         * http://127.0.0.1:8088  查看Yarn状态
