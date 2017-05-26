@@ -13,7 +13,7 @@ echo "172.17.0.5  hadoop04" >> /etc/hosts
 
 
 # 无密码登录
-ssh-keygen -t rsa -P "" -f ~/.ssh/id_rsa
+ssh-keygen -t rsa -P "" -f /root/.ssh/id_rsa
 
 ssh-copy-id -i hadoop01 
 ssh-copy-id -i hadoop02

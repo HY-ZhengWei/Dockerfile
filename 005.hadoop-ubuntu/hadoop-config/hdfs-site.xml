@@ -24,8 +24,7 @@
     
   <property>
     <name>dfs.secondary.http.address</name>
-    <value>0.0.0.0:50090</value>
-    <description>多个SecondaryNameNode可以设置为0.0.0.0:50090</description>
+    <value>hadoop04:50090</value>
   </property>
     
   <property>
