@@ -22,11 +22,12 @@
     * 以安装Apache Hadoop 2.6.5为例子
     * 启动OpenSSH服务
     * 服务器功能规划（以4台服务器举例）
-|NameNode节点|DataNode节点|SecordaryNameNode节点|
-|hadoop01   |            |        |
-|           |hadoop02    |        |
-|           |hadoop03    |        |
-|           |            |hadoop04|
+|NameNode|DataNode|SecordaryNameNode|
+|--------|--------|-----------------|
+|hadoop01|        |                 |
+|        |hadoop02|                 |
+|        |hadoop03|                 |
+|        |        |hadoop04         |
     * Hadoop服务验证：
         * http://127.0.0.1:50070 查看NameNode状态
         * http://127.0.0.1:8088  查看Yarn状态
