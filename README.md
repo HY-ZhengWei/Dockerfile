@@ -29,18 +29,23 @@
         |          |hadoop02  |                   |
         |          |hadoop03  |                   |
         |          |          |hadoop04           |
-    * 容器运行命令样例
-        * 容器动态挂载的三个目录说明
+    * 容器动态挂载的三个目录说明
 
-            | 动态挂载目录 | 说明 |
-            |:--------    |:-------- |
-            |/hadoop      |Apache Hadoop软件所在的主目录|
-            |/hadoop_datas|Hadoop数据目录。每个容器的目录路径应均不同|
-            |/jdk         |Java JDK所在的主目录  |
+        | 动态挂载目录 | 说明 |
+        |:--------    |:-------- |
+        |/hadoop      |Apache Hadoop软件所在的主目录|
+        |/hadoop_datas|Hadoop数据目录。每个容器的目录路径应均不同|
+        |/jdk         |Java JDK所在的主目录  |
+    * 容器启动命令样例
         * hadoop01：docker run --name c_hadoop01 -h hadoop01 -p 22001:22 -p 9000:9000 -p 9001:9001 -p 8088:8088 -p 50010:50010 -p 50020:50020 -p 50070:50070 -p 50090:50090 -d -v /Users/hy/WSS/WorkSpace_Docker/hadoop-2.6.5:/hadoop -v /Users/hy/WSS/WorkSpace_Docker/hadoop_datas01:/hadoop_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hadoop-ubuntu
         * hadoop02：docker run --name c_hadoop02 -h hadoop02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hadoop-2.6.5:/hadoop -v /Users/hy/WSS/WorkSpace_Docker/hadoop_datas02:/hadoop_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hadoop-ubuntu
         * hadoop03：docker run --name c_hadoop03 -h hadoop03 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hadoop-2.6.5:/hadoop -v /Users/hy/WSS/WorkSpace_Docker/hadoop_datas03:/hadoop_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hadoop-ubuntu
         * hadoop04：docker run --name c_hadoop04 -h hadoop04 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hadoop-2.6.5:/hadoop -v /Users/hy/WSS/WorkSpace_Docker/hadoop_datas04:/hadoop_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hadoop-ubuntu
+    * 容器进入命令样例
+        * docker exec -it c_hadoop01 /bin/bash
+        * docker exec -it c_hadoop02 /bin/bash
+        * docker exec -it c_hadoop03 /bin/bash
+        * docker exec -it c_hadoop04 /bin/bash
     * 配置IP、HostName、免密登录（所有容器均启动成功后）
         * 确认每台容器的IP，并配置在 /usr/bin/hadoop.init.config.sh 脚本中。
         * 执行同步配置命令：hadoop.sync.config.sh
