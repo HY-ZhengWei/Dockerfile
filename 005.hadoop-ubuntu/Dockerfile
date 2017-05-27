@@ -38,7 +38,8 @@ ADD hadoop-config $HADOOP_CONIFG_HY
 
 
 # 辅助命令：设置HostName、设置免密码登录
-ADD hadoop.init.config.sh  /usr/bin
+ADD hadoop.init.all.sh     /usr/bin
+ADD hadoop.init.hosts.sh   /usr/bin
 
 # 辅助命令：用于同步hadoop集群情况下的配置
 ADD hadoop.sync.config.sh  /usr/bin
@@ -101,10 +102,13 @@ CMD ["/usr/bin/supervisord"]
 
 # 在所有容器均启动成功后，再在所有节点容器中均执行如下初始环境配置命令
 # 执行前须确认IP地址的正确
-# hadoop.init.config.sh
+# hadoop.init.all.sh
 
 # 在主节点容器上执行Hadoop格式化命令
 # hdfs namenode -format
 
 # 在主节点容器上执行启动Hadoop命令
 # start-all.sh
+
+# 重启容器时hosts文件中的内容会丢失，所以要再次添加一次
+# hadoop.init.hosts.sh
