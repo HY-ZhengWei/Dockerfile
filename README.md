@@ -56,6 +56,5 @@
     * Hadoop服务验证：
         * http://127.0.0.1:50070 查看NameNode状态
         * http://127.0.0.1:8088  查看Yarn状态
-    * 启动Hadoop集群
-        * 主节点容器中执行初始化命令：hdfs namenode -format
-        * 主节点容器中执行启动命令：start-all.sh
+    * 重启容器时hosts文件中的内容会丢失，所以要再次添加一次
+        * hadoop.init.hosts.sh
