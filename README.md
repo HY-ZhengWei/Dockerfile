@@ -48,6 +48,7 @@
         * docker exec -it c_hadoop04 /bin/bash
     * 配置IP、HostName、免密登录（所有容器均启动成功后）
         * 确认每台容器的IP，并配置在 /usr/bin/hadoop.init.all.sh 脚本中。
+        * 确认每台容器的IP，并配置在 /usr/bin/hadoop.init.hosts.sh 脚本中。
         * 执行同步配置命令：hadoop.sync.config.sh
         * 执行初始化配置命令：hadoop.init.all.sh 。在所有容器中均要执行，中间要输入多台容器的登录密码(默认为root)
     * 启动Hadoop集群
