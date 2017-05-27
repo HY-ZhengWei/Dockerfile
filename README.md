@@ -12,6 +12,12 @@
     
 * [tomcat-ubuntu动态Tomcat版本环境](https://hub.docker.com/r/hyzhengwei/tomcat-ubuntu)
     * 动态Tomcat版本环境。Tomcat版本可由最终用户来决定。通过-v动态挂载的方式添加到运行的容器中。
+    * 容器动态挂载的两个目录说明
+
+        | 动态挂载目录 | 说明 |
+        |:--------   |:-------- |
+        |/tomcat     |Apache Tomcat软件所在的主目录|
+        |/jdk        |Java JDK所在的主目录|
     * 容器运行命令样例：run --name c_tomcat -p 8080:8080 -d -v 宿主机Tomcat目录:/tomcat -v JDK在宿主机的路径:/jdk:ro hyzhengwei/tomcat-ubuntu
     
 * [sshd-ubuntu安装OpenSSH服务](https://hub.docker.com/r/hyzhengwei/sshd-ubuntu)
@@ -63,7 +69,7 @@
 * [hbase-ubuntu动态HBase版本环境](https://hub.docker.com/r/hyzhengwei/hbase-ubuntu)
     * 以安装Apache HBase 1.3.1为例子
     * 开启OpenSSH服务
-    * 容器动态挂载的三个目录说明
+    * 容器动态挂载的两个目录说明
 
         | 动态挂载目录 | 说明 |
         |:--------   |:-------- |
