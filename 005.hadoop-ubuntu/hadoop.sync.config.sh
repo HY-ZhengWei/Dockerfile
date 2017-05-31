@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 scp -r $HADOOP_HOME/etc/hadoop/*  root@hadoop02:$HADOOP_HOME/etc/hadoop
 scp -r $HADOOP_HOME/etc/hadoop/*  root@hadoop03:$HADOOP_HOME/etc/hadoop
 scp -r $HADOOP_HOME/etc/hadoop/*  root@hadoop04:$HADOOP_HOME/etc/hadoop
