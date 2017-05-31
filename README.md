@@ -63,7 +63,7 @@
     * 配置IP、HostName、免密登录（所有容器均启动成功后）
         * 确认每台容器的IP，并配置在 /usr/bin/hadoop.init.all.sh 脚本中。
         * 确认每台容器的IP，并配置在 /usr/bin/hadoop.init.hosts.sh 脚本中。
-        * 执行同步配置命令：hadoop.sync.config.sh
+        * 执行同步配置命令：hadoop.sync.config.sh  （可选）
         * 执行初始化配置命令：hadoop.init.all.sh 。在所有容器中均要执行，中间要输入多台容器的登录密码(默认为root)
     * 启动Hadoop集群
         * 主节点容器中执行初始化命令：hdfs namenode -format
@@ -106,7 +106,7 @@
     * 配置IP、HostName、免密登录（所有容器均启动成功后）
         * 确认每台容器的IP，并配置在 /usr/bin/hbase.init.all.sh 脚本中。
         * 确认每台容器的IP，并配置在 /usr/bin/hbase.init.hosts.sh 脚本中。
-        * 执行初始化配置命令：hbase.init.all.sh 。在所有容器中均要执行
+        * 执行初始化配置命令：hbase.init.all.sh 。在所有容器中均要执行，中间要输入多台容器的登录密码(默认为root)
     * 启动HBase集群
         * 主节点容器中执行启动命令：hbase-start.sh
     * HBase服务验证：
@@ -145,7 +145,7 @@
     * 配置IP、HostName、免密登录（所有容器均启动成功后）
         * 确认每台容器的IP，并配置在 /usr/bin/zookeeper.init.all.sh 脚本中。
         * 确认每台容器的IP，并配置在 /usr/bin/zookeeper.init.hosts.sh 脚本中。
-        * 执行初始化配置命令：zookeeper.init.all.sh 。在所有容器中均要执行
+        * 执行初始化配置命令：zookeeper.init.all.sh 。在所有容器中均要执行，中间要输入多台容器的登录密码(默认为root)
     * 启动Zookeeper节点（每个节点均要执行）
         * 容器中执行启动命令（后台模式）：zkServer.sh start
         * 容器中执行启动命令（前台模式）：zkServer.sh start-foreground
