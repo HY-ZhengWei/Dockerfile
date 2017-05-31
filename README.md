@@ -38,7 +38,7 @@
     * 服务器的IP规划（可在hadoop.init.hosts.sh脚本中修改）
         
         | 服务器名称 | IP地址 |
-        |:--------:|:--------:|
+        |:--------:|:-------- |
         |hadoop01|172.17.0.2|
         |hadoop02|172.17.0.3|
         |hadoop03|172.17.0.4|
@@ -75,8 +75,17 @@
         * hadoop.init.hosts.sh
         
 * [hbase-ubuntu动态HBase版本环境](https://hub.docker.com/r/hyzhengwei/hbase-ubuntu)
-    * 以安装Apache HBase 1.3.1为例子
+    * 以安装Apache HBase 1.2.5为例子
     * 开启OpenSSH服务
+    * 服务器的IP规划（可在hbase.init.hosts.sh脚本中修改）
+        
+        | 服务器名称 | IP地址 |
+        |:--------: |:-------- |
+        |zookeeper01|172.17.0.6 |
+        |zookeeper02|172.17.0.7 |
+        |zookeeper03|172.17.0.8 |
+        |hbase01    |172.17.0.9 |
+        |hbase02    |172.17.0.10|
     * 容器动态挂载的两个目录说明
 
         | 动态挂载目录 | 说明 |
@@ -84,7 +93,8 @@
         |/hbase      |Apache HBase软件所在的主目录|
         |/jdk        |Java JDK所在的主目录|
     * 容器启动命令样例
-        * docker run --name c_hbase01 -h hbase01 -p 60010:60010 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.3.1:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
+        * docker run --name c_hbase01 -h hbase01 -p 60010:60010 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
+        * docker run --name c_hbase02 -h hbase02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
     * 配置IP、HostName
         * 确认每台容器的IP，并配置在 /usr/bin/hbase.init.all.sh 脚本中。
         * 确认每台容器的IP，并配置在 /usr/bin/hbase.init.hosts.sh 脚本中。
@@ -95,3 +105,44 @@
         * http://127.0.0.1:60010 查看HBase状态
     * 重启容器时hosts文件中的内容会丢失，所以要再次添加一次
         * hbase.init.hosts.sh
+        
+* [zookeeper-ubuntu动态Zookeeper版本环境](https://hub.docker.com/r/hyzhengwei/zookeeper-ubuntu)
+    * 以安装Apache Zookeeper 3.4.10为例子
+    * 开启OpenSSH服务
+    * 服务器的IP规划（可在zookeeper.init.hosts.sh脚本中修改）
+        
+        | 服务器名称 | IP地址 |
+        |:--------: |:-------- |
+        |zookeeper01|172.17.0.6 |
+        |zookeeper02|172.17.0.7 |
+        |zookeeper03|172.17.0.8 |
+    * 容器动态挂载的两个目录说明
+
+        | 动态挂载目录 | 说明 |
+        |:--------   |:-------- |
+        |/zookeeper      |Apache Zookeeper软件所在的主目录|
+        |/zookeeper_datas|Zookeeper数据目录。每个容器的目录路径应均不同且均有一个内容不同的myid文件|
+        |/jdk            |Java JDK所在的主目录|
+    * 服务器的端口规划
+        
+        | 端口 | 说明 |
+        |:--------: |:-------- |
+        | 2181 |对客户端提供服务的端口 |
+        | 2888 |follower用来连接到leader，只在leader上监听该端口 |
+        | 3888 |用于leader选举的 |
+    * 容器启动命令样例
+        * docker run --name c_zookeeper01 -h zookeeper01 -P -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas01:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
+        * docker run --name c_zookeeper02 -h zookeeper02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas02:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
+        * docker run --name c_zookeeper03 -h zookeeper03 -P -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas03:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
+    * 配置IP、HostName
+        * 确认每台容器的IP，并配置在 /usr/bin/zookeeper.init.all.sh 脚本中。
+        * 确认每台容器的IP，并配置在 /usr/bin/zookeeper.init.hosts.sh 脚本中。
+        * 执行初始化配置命令：zookeeper.init.all.sh 。在所有容器中均要执行
+    * 启动Zookeeper节点（每个节点均要执行）
+        * 容器中执行启动命令（后台模式）：zkServer.sh start
+        * 容器中执行启动命令（前台模式）：zkServer.sh start-foreground
+    * Zookeeper服务验证：
+        * zkServer.sh status  查看状态
+        * zkCli.sh -server  172.17.0.6:2181 ,172.17.0.7:2181 ,172.17.0.8:2181
+    * 重启容器时hosts文件中的内容会丢失，所以要再次添加一次
+        * zookeeper.init.hosts.sh
