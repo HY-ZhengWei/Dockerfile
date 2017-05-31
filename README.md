@@ -143,6 +143,6 @@
         * 容器中执行启动命令（前台模式）：zkServer.sh start-foreground
     * Zookeeper服务验证：
         * zkServer.sh status  查看状态
-        * zkCli.sh -server  172.17.0.6:2181 ,172.17.0.7:2181 ,172.17.0.8:2181
+        * zkCli.sh -server  172.17.0.6:2181 ,172.17.0.7:2181 ,172.17.0.8:2181  客户端连接
     * 重启容器时hosts文件中的内容会丢失，所以要再次添加一次
         * zookeeper.init.hosts.sh
