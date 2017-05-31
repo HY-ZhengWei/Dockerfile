@@ -92,6 +92,14 @@
         |:--------   |:-------- |
         |/hbase      |Apache HBase软件所在的主目录|
         |/jdk        |Java JDK所在的主目录|
+    * 服务器的端口规划
+        
+        | 端口 | 说明 |
+        |:--------: |:-------- |
+        | 60000 |IPC |
+        | 60010 |http服务端口 |
+        | 60020 |IPC |
+        | 60030 |http服务端口 |
     * 容器启动命令样例
         * docker run --name c_hbase01 -h hbase01 -p 60010:60010 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
         * docker run --name c_hbase02 -h hbase02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
