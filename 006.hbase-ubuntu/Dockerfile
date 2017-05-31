@@ -51,9 +51,8 @@ CMD ["/usr/bin/supervisord"]
 # docker build -t hyzhengwei/hbase-ubuntu .
 
 # 镜像创建成功后，启动HBase主容器
-# docker run --name c_hbase01 -h hbase01 -p 60010:60010 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.3.1:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
 # docker run --name c_hbase01 -h hbase01 -p 60010:60010 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.3.0:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
-# docker run --name c_hbase01 -h hbase01 -p 60010:60010 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
+# docker run --name c_hbase02 -h hbase02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.3.0:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
 # docker exec -it c_hbase01 /bin/bash
 
 
@@ -62,7 +61,7 @@ CMD ["/usr/bin/supervisord"]
 # 执行前须确认IP地址的正确
 # hbase.init.all.sh
 
-# 在主节点容器上执行启动HBase命令
+# 在主节点容器上执行启动HBase集群命令
 # start-hbase.sh
 
 # 重启容器时hosts文件中的内容会丢失，所以要再次添加一次

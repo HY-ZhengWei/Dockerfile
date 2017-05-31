@@ -30,4 +30,14 @@
     <name>hbase.master.info.port</name>
     <value>60010</value>    
   </property>
+    
+  <property>
+    <name>hbase.cluster.distributed</name>
+    <value>true</value>
+  </property>
+    
+  <property>
+    <name>hbase.zookeeper.quorum</name>
+    <value>zookeeper01,zookeeper02,zookeeper03</value>
+  </property>
 </configuration>
