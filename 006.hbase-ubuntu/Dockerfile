@@ -52,6 +52,8 @@ CMD ["/usr/bin/supervisord"]
 
 # 镜像创建成功后，启动HBase主容器
 # docker run --name c_hbase01 -h hbase01 -p 60010:60010 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.3.1:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
+# docker run --name c_hbase01 -h hbase01 -p 60010:60010 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.3.0:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
+# docker run --name c_hbase01 -h hbase01 -p 60010:60010 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
 # docker exec -it c_hbase01 /bin/bash
 
 
