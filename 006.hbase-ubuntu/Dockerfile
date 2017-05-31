@@ -37,7 +37,7 @@ ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
 # 设置开放的端口
-EXPOSE 60010
+EXPOSE 60000 60010 60020 60030
 
 
 
