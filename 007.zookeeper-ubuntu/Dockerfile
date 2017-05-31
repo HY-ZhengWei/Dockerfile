@@ -63,7 +63,7 @@ CMD ["/usr/bin/supervisord"]
 # 执行前须确认IP地址的正确
 # zookeeper.init.all.sh
 
-# 在节点容器上执行启动Zookeeper命令
+# 在节点容器上执行启动Zookeeper命令（每个节点均要执行）
 # zkServer.sh start
 # zkServer.sh start-foreground
 

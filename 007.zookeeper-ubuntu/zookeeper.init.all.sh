@@ -7,3 +7,11 @@ cp $ZOOKEEPER_CONIFG_HY/* $ZOOKEEPER_CONF_DIR
 
 # 设置host name
 zookeeper.init.hosts.sh
+
+
+# 无密码登录
+ssh-keygen -t rsa -P "" -f /root/.ssh/id_rsa
+
+ssh-copy-id -i zookeeper01 
+ssh-copy-id -i zookeeper02
+ssh-copy-id -i zookeeper03
