@@ -147,6 +147,7 @@
         * 确认每台容器的IP，并配置在 /usr/bin/zookeeper.init.hosts.sh 脚本中。
         * 执行初始化配置命令：zookeeper.init.all.sh 。在所有容器中均要执行，中间要输入多台容器的登录密码(默认为root)
     * 启动Zookeeper节点（每个节点均要执行）
+        * 请确保动态挂载的/zookeeper_datas目录中有myid文件
         * 容器中执行启动命令（后台模式）：zkServer.sh start
         * 容器中执行启动命令（前台模式）：zkServer.sh start-foreground
     * Zookeeper服务验证：
