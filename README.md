@@ -58,10 +58,12 @@
         docker run --name c_hadoop04 -h hadoop04 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hadoop-2.6.5:/hadoop -v /Users/hy/WSS/WorkSpace_Docker/hadoop_datas04:/hadoop_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hadoop-ubuntu
         ```
     * 容器进入命令样例
-        * docker exec -it c_hadoop01 /bin/bash
-        * docker exec -it c_hadoop02 /bin/bash
-        * docker exec -it c_hadoop03 /bin/bash
-        * docker exec -it c_hadoop04 /bin/bash
+        ```sh
+        docker exec -it c_hadoop01 /bin/bash
+        docker exec -it c_hadoop02 /bin/bash
+        docker exec -it c_hadoop03 /bin/bash
+        docker exec -it c_hadoop04 /bin/bash
+        ```
     * 配置IP、HostName、免密登录（所有容器均启动成功后）
         * 确认每台容器的IP，并配置在 /usr/bin/hadoop.init.all.sh 脚本中。
         * 确认每台容器的IP，并配置在 /usr/bin/hadoop.init.hosts.sh 脚本中。
@@ -80,7 +82,19 @@
         * http://127.0.0.1:50070 查看NameNode状态
         * http://127.0.0.1:8088  查看Yarn状态
     * 重启容器时hosts文件中的内容会丢失，所以要再次添加一次
-        * hadoop.init.hosts.sh
+        ```sh
+        docker start c_hadoop01
+        docker start c_hadoop02
+        docker start c_hadoop03
+        docker start c_hadoop04
+        
+        docker exec c_hadoop01 hadoop.init.hosts.sh
+        docker exec c_hadoop02 hadoop.init.hosts.sh
+        docker exec c_hadoop03 hadoop.init.hosts.sh
+        docker exec c_hadoop04 hadoop.init.hosts.sh
+        
+        docker exec c_hadoop01 start-all.sh
+        ```
         
 * [hbase-ubuntu动态HBase版本环境](https://hub.docker.com/r/hyzhengwei/hbase-ubuntu)
     * 以安装Apache HBase 1.2.5为例子
@@ -112,21 +126,47 @@
         | 16020 | |
         | 16030 | |
     * 容器启动命令样例
-        * docker run --name c_hbase01 -h hbase01 -p 60000:60000 -p 60010:60010 -p 60030:60030 -p 16000:16000 -p 16020:16020 -p 16030:16030 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
-        * docker run --name c_hbase02 -h hbase02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
+        ```sh
+        docker run --name c_hbase01 -h hbase01 -p 60000:60000 -p 60010:60010 -p 60030:60030 -p 16000:16000 -p 16020:16020 -p 16030:16030 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
+        docker run --name c_hbase02 -h hbase02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
+        ```
     * 容器进入命令样例
-        * docker exec -it c_hbase01 /bin/bash
-        * docker exec -it c_hbase02 /bin/bash
+        ```sh
+        docker exec -it c_hbase01 /bin/bash
+        docker exec -it c_hbase02 /bin/bash
+        ```
     * 配置IP、HostName、免密登录（所有容器均启动成功后）
         * 确认每台容器的IP，并配置在 /usr/bin/hbase.init.all.sh 脚本中。
         * 确认每台容器的IP，并配置在 /usr/bin/hbase.init.hosts.sh 脚本中。
-        * 执行初始化配置命令：hbase.init.all.sh 。在所有容器中均要执行，中间要输入多台容器的登录密码(默认为root)
+        * 执行初始化配置命令：hbase.init.all.sh 。在所有容器中均要执行(默认为root)
+            ```sh
+            docker exec c_hbase01 hbase.init.all.sh hbase
+            docker exec c_hbase02 hbase.init.all.sh hbase
+            ```
     * 启动HBase集群
         * 主节点容器中执行启动命令：hbase-start.sh
     * HBase服务验证：
         * http://127.0.0.1:60010 查看HBase状态
     * 重启容器时hosts文件中的内容会丢失，所以要再次添加一次
-        * hbase.init.hosts.sh
+        ```sh
+        # 使用HBase自带的Zookeeper
+        docker start c_hbase01
+        docker start c_hbase02
+        
+        docker exec c_hbase01 hbase.init.hosts.sh hbase
+        docker exec c_hbase02 hbase.init.hosts.sh hbase
+        
+        docker exec c_hbase01 start-hbase.sh
+        
+        # 独立部署Zookeeper
+        docker start c_hbase01
+        docker start c_hbase02
+        
+        docker exec c_hbase01 hbase.init.hosts.sh zookeeper
+        docker exec c_hbase02 hbase.init.hosts.sh zookeeper
+        
+        docker exec c_hbase01 start-hbase.sh
+        ```
         
 * [zookeeper-ubuntu动态Zookeeper版本环境](https://hub.docker.com/r/hyzhengwei/zookeeper-ubuntu)
     * 以安装Apache Zookeeper 3.4.10为例子
