@@ -9,6 +9,7 @@ MAINTAINER ZhengWei<HY.ZhengWei@qq.com> 2017-05-16
 
 RUN apt-get update
 RUN apt-get install -y openssh-server
+RUN apt-get install -y sshpass/xenial
 RUN mkdir /var/run/sshd
 
 # 设置sshd服务允许root用户登陆
