@@ -18,7 +18,7 @@
         |:--------   |:-------- |
         |/tomcat     |Apache Tomcat软件所在的主目录|
         |/jdk        |Java JDK所在的主目录|
-    * 容器运行命令样例：run --name c_tomcat -p 8080:8080 -d -v 宿主机Tomcat目录:/tomcat -v JDK在宿主机的路径:/jdk:ro hyzhengwei/tomcat-ubuntu
+    * 容器运行命令样例：docker run --name c_tomcat -p 8080:8080 -d -v 宿主机Tomcat目录:/tomcat -v JDK在宿主机的路径:/jdk:ro hyzhengwei/tomcat-ubuntu
     
 * [sshd-ubuntu安装OpenSSH服务](https://hub.docker.com/r/hyzhengwei/sshd-ubuntu)
     * 安装OpenSSH服务，随时准备打开22管理远程管理端口
@@ -139,7 +139,7 @@
         | 2888 |follower用来连接到leader，只在leader上监听该端口 |
         | 3888 |用于leader选举的 |
     * 容器启动命令样例
-        * docker run --name c_zookeeper01 -h zookeeper01 -P -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas01:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
+        * docker run --name c_zookeeper01 -h zookeeper01 -p 2181:2181 -p 2888:2888 -p 3888:3888 -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas01:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
         * docker run --name c_zookeeper02 -h zookeeper02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas02:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
         * docker run --name c_zookeeper03 -h zookeeper03 -P -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas03:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
     * 配置IP、HostName、免密登录（所有容器均启动成功后）
