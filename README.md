@@ -104,7 +104,7 @@
         | 16020 | |
         | 16030 | |
     * 容器启动命令样例
-        * docker run --name c_hbase01 -h hbase01 -p 60010:60010 -p 60000:60000 -p 60010:60010 -p 60030:60030 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
+        * docker run --name c_hbase01 -h hbase01 -p 60000:60000 -p 60010:60010 -p 60030:60030 -p 16000:16000 -p 16020:16020 -p 16030:16030 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
         * docker run --name c_hbase02 -h hbase02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
     * 容器进入命令样例
         * docker exec -it c_hbase01 /bin/bash
@@ -151,6 +151,7 @@
     * 容器进入命令样例
         * docker exec -it c_zookeeper01 /bin/bash
         * docker exec -it c_zookeeper02 /bin/bash
+        * docker exec -it c_zookeeper03 /bin/bash
     * 配置IP、HostName、免密登录（所有容器均启动成功后）
         * 确认每台容器的IP，并配置在 /usr/bin/zookeeper.init.all.sh 脚本中。
         * 确认每台容器的IP，并配置在 /usr/bin/zookeeper.init.hosts.sh 脚本中。
