@@ -200,17 +200,26 @@
         | 2888 |follower用来连接到leader，只在leader上监听该端口 |
         | 3888 |用于leader选举的 |
     * 容器启动命令样例
-        * docker run --name c_zookeeper01 -h zookeeper01 -p 2181:2181 -p 2888:2888 -p 3888:3888 -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas01:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
-        * docker run --name c_zookeeper02 -h zookeeper02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas02:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
-        * docker run --name c_zookeeper03 -h zookeeper03 -P -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas03:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
+        ```sh
+        docker run --name c_zookeeper01 -h zookeeper01 -p 2181:2181 -p 2888:2888 -p 3888:3888 -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas01:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
+        docker run --name c_zookeeper02 -h zookeeper02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas02:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
+        docker run --name c_zookeeper03 -h zookeeper03 -P -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas03:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
+        ```
     * 容器进入命令样例
-        * docker exec -it c_zookeeper01 /bin/bash
-        * docker exec -it c_zookeeper02 /bin/bash
-        * docker exec -it c_zookeeper03 /bin/bash
+        ```sh
+        docker exec -it c_zookeeper01 /bin/bash
+        docker exec -it c_zookeeper02 /bin/bash
+        docker exec -it c_zookeeper03 /bin/bash
+        ```
     * 配置IP、HostName、免密登录（所有容器均启动成功后）
         * 确认每台容器的IP，并配置在 /usr/bin/zookeeper.init.all.sh 脚本中。
         * 确认每台容器的IP，并配置在 /usr/bin/zookeeper.init.hosts.sh 脚本中。
-        * 执行初始化配置命令：zookeeper.init.all.sh 。在所有容器中均要执行，中间要输入多台容器的登录密码(默认为root)
+        * 执行初始化配置命令：zookeeper.init.all.sh 。在所有容器中均要执行(默认为root)
+            ```sh
+            docker exec c_zookeeper01 zookeeper.init.all.sh
+            docker exec c_zookeeper02 zookeeper.init.all.sh
+            docker exec c_zookeeper03 zookeeper.init.all.sh
+            ```
     * 启动Zookeeper节点（每个节点均要执行）
         * 请确保动态挂载的/zookeeper_datas目录中有myid文件
         * 容器中执行启动命令（后台模式）：zkServer.sh start
@@ -219,4 +228,16 @@
         * zkServer.sh status  查看状态
         * zkCli.sh -server  172.17.0.6:2181 ,172.17.0.7:2181 ,172.17.0.8:2181  客户端连接
     * 重启容器时hosts文件中的内容会丢失，所以要再次添加一次
-        * zookeeper.init.hosts.sh
+        ```sh
+        docker start c_zookeeper01
+        docker start c_zookeeper02
+        docker start c_zookeeper03
+        
+        docker exec c_zookeeper01 zookeeper.init.hosts.sh
+        docker exec c_zookeeper02 zookeeper.init.hosts.sh
+        docker exec c_zookeeper03 zookeeper.init.hosts.sh
+        
+        docker exec c_zookeeper01 zkServer.sh start
+        docker exec c_zookeeper02 zkServer.sh start
+        docker exec c_zookeeper03 zkServer.sh start
+        ```
