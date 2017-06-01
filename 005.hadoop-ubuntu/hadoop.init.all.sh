@@ -12,7 +12,7 @@ hadoop.init.hosts.sh
 # 无密码登录
 ssh-keygen -t rsa -P "" -f /root/.ssh/id_rsa
 
-ssh-copy-id -i hadoop01 
-ssh-copy-id -i hadoop02
-ssh-copy-id -i hadoop03
-ssh-copy-id -i hadoop04
+sshpass -p root ssh-copy-id -i hadoop01 
+sshpass -p root ssh-copy-id -i hadoop02
+sshpass -p root ssh-copy-id -i hadoop03
+sshpass -p root ssh-copy-id -i hadoop04
