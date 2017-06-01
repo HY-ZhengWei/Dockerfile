@@ -65,12 +65,10 @@
         * 确认每台容器的IP，并配置在 /usr/bin/hadoop.init.hosts.sh 脚本中。
         * 执行同步配置命令：hadoop.sync.config.sh  （可选）
         * 执行初始化配置命令：hadoop.init.all.sh 。在所有容器中均要执行(默认为root)
-```sh
-docker exec c_hadoop01 hadoop.init.all.sh
-docker exec c_hadoop02 hadoop.init.all.sh
-docker exec c_hadoop03 hadoop.init.all.sh
-docker exec c_hadoop04 hadoop.init.all.sh
-```
+            docker exec c_hadoop01 hadoop.init.all.sh
+            docker exec c_hadoop02 hadoop.init.all.sh
+            docker exec c_hadoop03 hadoop.init.all.sh
+            docker exec c_hadoop04 hadoop.init.all.sh
     * 启动Hadoop集群
         * 主节点容器中执行初始化命令：hdfs namenode -format
         * 主节点容器中执行启动命令：start-all.sh
