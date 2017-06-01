@@ -39,6 +39,7 @@ ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 # 设置开放的端口
 EXPOSE 60000 60010 60020 60030
 EXPOSE 16000 16020 16030
+EXPOSE 2181 2888 3888
 
 
 
@@ -52,7 +53,7 @@ CMD ["/usr/bin/supervisord"]
 # docker build -t hyzhengwei/hbase-ubuntu .
 
 # 镜像创建成功后，启动HBase主容器
-# docker run --name c_hbase01 -h hbase01 -p 60010:60010 -p 60000:60000 -p 60010:60010 -p 60030:60030 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
+# docker run --name c_hbase01 -h hbase01 -p 60000:60000 -p 60010:60010 -p 60030:60030 -p 16000:16000 -p 16020:16020 -p 16030:16030 -p 2181:2181 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
 # docker run --name c_hbase02 -h hbase02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
 # docker exec -it c_hbase01 /bin/bash
 
