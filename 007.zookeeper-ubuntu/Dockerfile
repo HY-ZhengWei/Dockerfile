@@ -38,7 +38,7 @@ ADD supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 
 # 设置开放的端口
-EXPOSE 2181 2182 2183
+EXPOSE 2181 2888 3888
 
 
 
@@ -52,7 +52,7 @@ CMD ["/usr/bin/supervisord"]
 # docker build -t hyzhengwei/zookeeper-ubuntu .
 
 # 镜像创建成功后，启动Zookeeper容器
-# docker run --name c_zookeeper01 -h zookeeper01 -P -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas01:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
+# docker run --name c_zookeeper01 -h zookeeper01 -p 2181:2181 -p 2888:2888 -p 3888:3888 -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas01:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
 # docker run --name c_zookeeper02 -h zookeeper02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas02:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
 # docker run --name c_zookeeper03 -h zookeeper03 -P -d -v /Users/hy/WSS/WorkSpace_Docker/zookeeper-3.4.10:/zookeeper -v /Users/hy/WSS/WorkSpace_Docker/zookeeper_datas03:/zookeeper_datas -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/zookeeper-ubuntu
 # docker exec -it c_zookeeper01 /bin/bash
