@@ -140,8 +140,14 @@
         * 确认每台容器的IP，并配置在 /usr/bin/hbase.init.hosts.sh 脚本中。
         * 执行初始化配置命令：hbase.init.all.sh 。在所有容器中均要执行(默认为root)
             ```sh
+            # 使用HBase自带的Zookeeper
             docker exec c_hbase01 hbase.init.all.sh hbase
             docker exec c_hbase02 hbase.init.all.sh hbase
+            ```
+            ```sh
+            # 独立部署Zookeeper
+            docker exec c_hbase01 hbase.init.all.sh zookeeper
+            docker exec c_hbase02 hbase.init.all.sh zookeeper
             ```
     * 启动HBase集群
         * 主节点容器中执行启动命令：hbase-start.sh
@@ -157,7 +163,8 @@
         docker exec c_hbase02 hbase.init.hosts.sh hbase
         
         docker exec c_hbase01 start-hbase.sh
-        
+        ```
+        ```ssh
         # 独立部署Zookeeper
         docker start c_hbase01
         docker start c_hbase02
