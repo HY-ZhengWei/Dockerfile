@@ -12,6 +12,6 @@ zookeeper.init.hosts.sh
 # 无密码登录
 ssh-keygen -t rsa -P "" -f /root/.ssh/id_rsa
 
-ssh-copy-id -i zookeeper01 
-ssh-copy-id -i zookeeper02
-ssh-copy-id -i zookeeper03
+sshpass -p root ssh-copy-id -i zookeeper01 
+sshpass -p root ssh-copy-id -i zookeeper02
+sshpass -p root ssh-copy-id -i zookeeper03
