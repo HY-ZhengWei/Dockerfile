@@ -38,6 +38,6 @@
     
   <property>
     <name>hbase.zookeeper.quorum</name>
-    <value>hbase01,hbse02</value>
+    <value>zookeeper01,zookeeper02,zookeeper03</value>
   </property>
 </configuration>
