@@ -176,7 +176,10 @@
             docker exec c_hbase02 hbase.init.all.sh zookeeper
             ```
     * 启动HBase集群
-        * 主节点容器中执行启动命令：hbase-start.sh
+        * 主节点容器中执行启动命令：start-hbase.sh
+        ```sh
+        docker exec c_hbase01 start-hbase.sh
+        ```
     * HBase服务验证：
         * http://127.0.0.1:60010 查看HBase状态
     * 重启容器时hosts文件中的内容会丢失，所以要再次添加一次
