@@ -1,17 +1,17 @@
 #!/bin/bash
 
 
-# 用预先设置好的HBase配置信息覆盖HBase包中的配置文件
-if [ "$1" = "hbase" ]; then
 
 # 使用HBase自带的zookeeper
-cp $HBASE_CONIFG_HY/* $HBASE_CONF_DIR
+if [ "$1" = "hbase" ]; then
 
-elif [ "$1" = "zookeeper" ]; then
+    cp $HBASE_CONIFG_HY/* $HBASE_CONF_DIR
 
 # 使用独立部署的zookeeper
-cp ${HBASE_CONIFG_HY}_zookeeper/* $HBASE_CONF_DIR
+elif [ "$1" = "zookeeper" ]; then
 
+    cp ${HBASE_CONIFG_HY}_zookeeper/* $HBASE_CONF_DIR
+    
 else  
   echo "Please select initialization zookeeper mode <hbase | zookeeper>."
   exit
