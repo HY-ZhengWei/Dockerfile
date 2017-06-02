@@ -10,7 +10,7 @@ cp $HBASE_CONIFG_HY/* $HBASE_CONF_DIR
 elif [ "$1" = "zookeeper" ]; then
 
 # 使用独立部署的zookeeper
-cp $HBASE_CONIFG_HY_zookeeper/* $HBASE_CONF_DIR
+cp ${HBASE_CONIFG_HY}_zookeeper/* $HBASE_CONF_DIR
 
 else  
   echo "Please select initialization zookeeper mode <hbase | zookeeper>."
