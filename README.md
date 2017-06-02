@@ -127,7 +127,7 @@
         | 16030 | |
     * 容器启动命令样例
         ```sh
-        docker run --name c_hbase01 -h hbase01 -p 60000:60000 -p 60010:60010 -p 60030:60030 -p 16000:16000 -p 16020:16020 -p 16030:16030 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
+        docker run --name c_hbase01 -h hbase01 -p 60000:60000 -p 60010:60010 -p 60030:60030 -p 16000:16000 -p 16020:16020 -p 16030:16030 -p 2181:2181 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
         docker run --name c_hbase02 -h hbase02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
         ```
     * 容器进入命令样例
