@@ -6,10 +6,16 @@
     * 安装vi、ifconfig、netstat、telnet、ping命令
     * 安装supervisord服务管理工具 
 
+
+
+---
 * [jdk-ubuntu动态JDK版本环境](https://hub.docker.com/r/hyzhengwei/jdk-ubuntu)
     * 动态JDK版本环境。JDK版本可由最终用户来决定。通过-v动态挂载的方式添加到运行的容器中。
     * 容器运行命令样例：docker run --name c_jdk --rm -it -v JDK在宿主机的路径:/jdk:ro hyzhengwei/jdk-ubuntu
-    
+   
+   
+   
+---
 * [tomcat-ubuntu动态Tomcat版本环境](https://hub.docker.com/r/hyzhengwei/tomcat-ubuntu)
     * 动态Tomcat版本环境。Tomcat版本可由最终用户来决定。通过-v动态挂载的方式添加到运行的容器中。
     * 容器动态挂载的两个目录说明
@@ -19,11 +25,17 @@
         |/tomcat     |Apache Tomcat软件所在的主目录|
         |/jdk        |Java JDK所在的主目录|
     * 容器运行命令样例：docker run --name c_tomcat -p 8080:8080 -d -v 宿主机Tomcat目录:/tomcat -v JDK在宿主机的路径:/jdk:ro hyzhengwei/tomcat-ubuntu
-    
+
+
+
+---
 * [sshd-ubuntu安装OpenSSH服务](https://hub.docker.com/r/hyzhengwei/sshd-ubuntu)
     * 安装OpenSSH服务，随时准备打开22管理远程管理端口
     * 容器运行命令样例：docker run --name c_sshd -p 22001:22 -d -v JDK在宿主机的路径:/jdk:ro hyzhengwei/sshd-ubuntu /usr/sbin/sshd -D
 
+
+
+---
 * [hadoop-ubuntu动态Hadoop版本环境](https://hub.docker.com/r/hyzhengwei/hadoop-ubuntu)
     * 以安装Apache Hadoop 2.6.5为例子
     * 开启OpenSSH服务
@@ -100,9 +112,10 @@
         docker stop `docker ps -q -f name=c_hadoop*`
         docker rm   `docker ps -a -q -f name=c_hadoop*`
         ```
+   
+   
         
-        
-        
+---
 * [hbase-ubuntu动态HBase版本环境](https://hub.docker.com/r/hyzhengwei/hbase-ubuntu)
     * 以安装Apache HBase 1.2.5为例子
     * 开启OpenSSH服务
@@ -134,7 +147,13 @@
         | 16030 | |
     * 容器启动命令样例
         ```sh
+        # 使用HBase自带的Zookeeper
         docker run --name c_hbase01 -h hbase01 -p 60000:60000 -p 60010:60010 -p 60030:60030 -p 16000:16000 -p 16020:16020 -p 16030:16030 -p 2181:2181 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
+        docker run --name c_hbase02 -h hbase02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
+        ```
+        ```sh
+        # 独立部署Zookeeper
+        docker run --name c_hbase01 -h hbase01 -p 60000:60000 -p 60010:60010 -p 60030:60030 -p 16000:16000 -p 16020:16020 -p 16030:16030 -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
         docker run --name c_hbase02 -h hbase02 -P -d -v /Users/hy/WSS/WorkSpace_Docker/hbase-1.2.5:/hbase -v /Users/hy/WSS/WorkSpace_Docker/jdk1.8.0:/jdk:ro hyzhengwei/hbase-ubuntu
         ```
     * 容器进入命令样例
@@ -189,6 +208,7 @@
         
         
         
+---
 * [zookeeper-ubuntu动态Zookeeper版本环境](https://hub.docker.com/r/hyzhengwei/zookeeper-ubuntu)
     * 以安装Apache Zookeeper 3.4.10为例子
     * 开启OpenSSH服务
