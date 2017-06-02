@@ -95,6 +95,13 @@
         
         docker exec c_hadoop01 start-all.sh
         ```
+    * 停止容器、删除容器
+        ```sh
+        docker stop `docker ps -q -f name=c_hadoop*`
+        docker rm   `docker ps -a -q -f name=c_hadoop*`
+        ```
+        
+        
         
 * [hbase-ubuntu动态HBase版本环境](https://hub.docker.com/r/hyzhengwei/hbase-ubuntu)
     * 以安装Apache HBase 1.2.5为例子
@@ -174,6 +181,13 @@
         
         docker exec c_hbase01 start-hbase.sh
         ```
+    * 停止容器、删除容器
+        ```sh
+        docker stop `docker ps -q -f name=c_hbase*`
+        docker rm   `docker ps -a -q -f name=c_hbase*`
+        ```
+        
+        
         
 * [zookeeper-ubuntu动态Zookeeper版本环境](https://hub.docker.com/r/hyzhengwei/zookeeper-ubuntu)
     * 以安装Apache Zookeeper 3.4.10为例子
@@ -224,8 +238,18 @@
         * 请确保动态挂载的/zookeeper_datas目录中有myid文件
         * 容器中执行启动命令（后台模式）：zkServer.sh start
         * 容器中执行启动命令（前台模式）：zkServer.sh start-foreground
+        ```sh
+        docker exec c_zookeeper01 zkServer.sh start
+        docker exec c_zookeeper02 zkServer.sh start
+        docker exec c_zookeeper03 zkServer.sh start
+        ```
     * Zookeeper服务验证：
-        * zkServer.sh status  查看状态
+        * 查看状态（应有一个leader、两个follower）
+        ```sh
+        docker exec c_zookeeper01 zkServer.sh status
+        docker exec c_zookeeper02 zkServer.sh status
+        docker exec c_zookeeper03 zkServer.sh status
+        ```
         * zkCli.sh -server  172.17.0.6:2181 ,172.17.0.7:2181 ,172.17.0.8:2181  客户端连接
     * 重启容器时hosts文件中的内容会丢失，所以要再次添加一次
         ```sh
@@ -240,4 +264,9 @@
         docker exec c_zookeeper01 zkServer.sh start
         docker exec c_zookeeper02 zkServer.sh start
         docker exec c_zookeeper03 zkServer.sh start
+        ```
+    * 停止容器、删除容器
+        ```sh
+        docker stop `docker ps -q -f name=c_zookeeper*`
+        docker rm   `docker ps -a -q -f name=c_zookeeper*`
         ```
