@@ -21,7 +21,8 @@ ENV HBASE_CONF_DIR    $HBASE_HOME/conf
 ENV HBASE_CONIFG_HY   /hbase-config
 
 
-ADD hbase-config $HBASE_CONIFG_HY
+ADD hbase-config           ${HBASE_CONIFG_HY}
+ADD hbase-config_zookeeper ${HBASE_CONIFG_HY}_zookeeper
 
 
 # 辅助命令：设置HostName
